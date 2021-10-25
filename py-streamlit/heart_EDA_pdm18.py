@@ -152,3 +152,12 @@ strong_corr = ['age', 'cp', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal'
 sns.heatmap(df[strong_corr].corr(), annot=True, vmin=-1, vmax=1, cmap='coolwarm')
 st.pyplot(fig6)
 
+st.markdown('***')
+st.subheader('Strongly correlated or anti-correlated parameters **2**')
+
+fig7 = plt.figure(figsize=(5,4))
+corr_matrix = df.corr().abs()
+high_corr_var=np.where(corr_matrix>0.8)
+high_corr_var=[(corr_matrix.columns[x],corr_matrix.columns[y]) for x,y in zip(*high_corr_var) if x!=y and x<y]
+sns.heatmap(df[strong_corr].corr(), annot=True, vmin=-1, vmax=1, cmap='coolwarm')
+st.pyplot(fig7)
